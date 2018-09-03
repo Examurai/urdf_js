@@ -1,0 +1,16 @@
+(function() {
+    'use strict';
+    const manager = new THREE.LoadingManager();
+    const loader = new URDFLoader(manager);
+    loader.load(
+        '../data/urdf/promobot.urdf',                    // The path to the URDF within the package OR absolute
+        // {
+        //     packageName : '../../../simulation_ws/src/promobot_description'    // The equivelant of a (list of) ROS package(s):// directory
+        // },
+        robot => { },                           // The robot is loaded!
+        {
+            loadMeshCb: (path, ext, done) => { },     // Callback for each mesh for custom mesh processing and loading code
+        }
+    );
+    customElements.define('urdf-viewer', URDFManipulator);
+})();
